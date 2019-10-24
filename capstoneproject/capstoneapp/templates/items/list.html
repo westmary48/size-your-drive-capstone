@@ -1,0 +1,14 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1>Items</h1>
+{% comment %} <a href="{% url 'capstoneapp:employee_form' %}">Create New Employee</a> {% endcomment %}
+    <div>
+    {% for item in all_items %}
+        <p>{{item.name }}</p>
+        <p>{{item.description}}</p>
+        <p>{{item.size}}</p>
+
+    {% endfor %}
+    </div>
+{% endblock content %}
