@@ -1,13 +1,8 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Items</title>
-  </head>
-  <body>
-    <h1>Items</h1>
+{% extends 'shared/base.html' %}
 
+{% block content %}
+    <h1>Items</h1>
+{% comment %} <a href="{% url 'capstoneapp:employee_form' %}">Create New Employee</a> {% endcomment %}
     <div>
     {% for item in all_items %}
         <p>{{item.name }}</p>
@@ -16,5 +11,4 @@
 
     {% endfor %}
     </div>
-  </body>
-</html>
+{% endblock content %}

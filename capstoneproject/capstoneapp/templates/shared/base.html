@@ -1,0 +1,45 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Size Your Drive</title>
+    <style>
+        .navList {
+            list-style-type: none;
+            display: flex;
+            border: 1px solid lightgray;
+            padding: 1em;
+        }
+         .navList__route {
+                margin: 0 0.5em;
+         }
+    </style>
+
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+    <nav id="site-nav">
+        <ol class="navList">
+            <li class="navList__route"><a href="{% url 'capstoneapp:home' %}">Home</a></li>
+            <li class="navList__route"><a href="{% url 'capstoneapp:items' %}">Clothing</a></li>
+            {% comment %} <li class="navList__route"><a href="{% url 'capstoneapp:department_list' %}">Add Clothing</a></li>
+            <li class="navList__route"><a href="{% url 'capstoneapp:computer_list' %}">Donation Box</a></li>
+            <li class="navList__route"><a href="{% url 'capstoneapp:training_list' %}">Previous Donations</a></li> {% endcomment %}
+            <li class="navList__route"><a href="{% url 'capstoneapp:logout' %}">Logout</a></li>
+        </ol>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
+
+</html>
