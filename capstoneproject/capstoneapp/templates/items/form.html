@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Bangazon</title>
+    <title>Size Your Drive</title>
   </head>
   <body>
     <h1>Clothing Item</h1>
@@ -35,7 +35,13 @@
           </select>
       </fieldset>
 
-      <input type="submit" value="Add It" />
+        {% if item.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT">
+            <input type="submit" value="Update" />
+        {% else %}
+            <input type="submit" value="Add It" />
+        {% endif %}
+
     </form>
   </body>
 </html>

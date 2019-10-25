@@ -29,19 +29,40 @@ def get_item(item_id):
         return db_cursor.fetchone()
 
 @login_required
+
+@login_required
 def item_details(request, item_id):
     if request.method == 'GET':
         item = get_item(item_id)
-
-        template = 'items/detail.html'
-        context = {
-            'item': item
-        }
-
-        return render(request, template, context)
+        template_name = 'items/detail.html'
+        return render(request, template_name, {'item': item})
 
     elif request.method == 'POST':
         form_data = request.POST
+
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == "PUT"
+        ):
+            with sqlite3.connect(Connection.db_path) as conn:
+                db_cursor = conn.cursor()
+
+                db_cursor.execute("""
+                UPDATE capstoneapp_item
+                SET name = ?,
+                    description = ?,
+                    size = ?,
+                    quantity = ?,
+                    category_id = ?
+                WHERE id = ?
+                """,
+                (
+                    form_data['name'], form_data['description'],
+                    form_data['size'], form_data['quantity'],
+                    form_data["category_id"], item_id,
+                ))
+
+            return redirect(reverse('capstoneapp:items'))
 
         # Check if this POST is for deleting a book
         #

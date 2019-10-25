@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from capstoneapp.models import Item
 from capstoneapp.models import Category
 from capstoneapp.models import model_factory
+from .details import get_item
 from ..connection import Connection
 
 
@@ -27,6 +28,21 @@ def item_form(request):
         categories = get_categories()
         template = 'items/form.html'
         context = {
+            'all_categories': categories
+        }
+
+        return render(request, template, context)
+
+@login_required
+def item_edit_form(request, item_id):
+
+    if request.method == 'GET':
+        item = get_item(item_id)
+        categories = get_categories()
+
+        template = 'items/form.html'
+        context = {
+            'item': item,
             'all_categories': categories
         }
 
