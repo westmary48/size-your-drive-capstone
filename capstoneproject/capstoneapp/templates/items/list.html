@@ -2,13 +2,22 @@
 
 {% block content %}
     <h1>Items</h1>
-{% comment %} <a href="{% url 'capstoneapp:employee_form' %}">Create New Employee</a> {% endcomment %}
+<a href="{% url 'capstoneapp:item_form' %}">Create New Clothing Item</a>
     <div>
     {% for item in all_items %}
-        <p>{{item.name }}</p>
-        <p>{{item.description}}</p>
-        <p>{{item.size}}</p>
-
+    <div>
+    <a href="{% url 'capstoneapp:item' item.id %}">
+    {{ item.name }} </a>
+</div>
+<div>
+     {{item.description }}
+     </div>
+     <div>
+     {{item.size}}
+     </div>
+</div>
     {% endfor %}
     </div>
+
+
 {% endblock content %}

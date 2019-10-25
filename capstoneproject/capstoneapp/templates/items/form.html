@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Size Your Drive</title>
+</head>
+
+<body>
+    <h1>Clothing</h1>
+
+    {% if item.id is not None %}
+        <form action="{% url 'capstoneapp:item' item.id %}" method="post">
+    {% else %}
+        <form action="{% url 'capstoneapp:items' %}" method="post">
+    {% endif %}
+        {% csrf_token %}
+      <fieldset>
+          <label for="name">Item: </label>
+          <input id="name" type="text" name="name" value="{{ item.name }}">
+      </fieldset>
+      <fieldset>
+          <label for="description">Decription:</label>
+          <input id="description" type="text" name="description" value="{{ item.description }}">
+      </fieldset>
+      <fieldset>
+          <label for="size">Size </label>
+          <input id="size" type="text" name="size" value="{{ item.size }}">
+      </fieldset>
+      <fieldset>
+          <label for="quantity">Quantity: </label>
+          <input id="quantity" type="number" name="quantity" value="{{ item.quantity }}">
+      </fieldset>
+       <fieldset>
+            <label for="category_id">Category: </label>
+            <select id="category_id" type="text" name="category_id">
+                {% for category in all_categories %}
+                <option {% if category.id == item.category_id %}selected{% endif %} value="{{ category.id }}">
+                    {{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+
+        {% if item.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT">
+            <input type="submit" value="Update" />
+        {% else %}
+            <input type="submit" value="Add It" />
+        {% endif %}
+
+    </form>
+  </body>
+</html>
