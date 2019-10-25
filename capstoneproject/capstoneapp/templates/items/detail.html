@@ -1,21 +1,16 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Detail</title>
+  </head>
+  <body>
+    <h1>{{ item.title }}</h1>
+    <h2> {{ item.author }}</h2>
 
-{% extends 'shared/base.html' %}
-{% block content %}
-<h1>{{ item.name }}</h1>
-<h2>By {{ item.author }}</h2>
-
-<div>Quantity: {{ item.quantity }}</div>
-<div>Size: {{ item.size }}</div>
-<div>Location: <a href={% url 'capstoneapp:category' item.category_id %}>{{ item.category_name }}</a></div>
-<div>Registered by Admin <a href={% url 'capstoneapp:donator' item.user_id%}>{{ item.first_name }} {{ item.last_name }}</a></div>
-<form action="{% url 'capstoneapp:item' item.id %}" method="POST">
-  {% csrf_token %}
-  <input type="hidden" name="actual_method" value="DELETE">
-  <button>Delete</button>
-</form>
-<form action="{% url 'capstoneapp:item' item.id %}" method="POST">
-  {% csrf_token %}
-  <input type="hidden" name="actual_method" value="EDIT">
-  <button>Edit</button>
-</form>
-{% endblock %}
+    <div>{{ item.category.name }}</div>
+    <div>{{ item.size }}</div>
+    <div>{{ item.quantity }}</div>
+  </body>
+</html>

@@ -55,6 +55,7 @@ def item_list(request):
                 form_data['size'], form_data['quantity'],
                  form_data["category_id"]))
 
+
     return redirect(reverse('capstoneapp:items'))
 
     # elif request.method == 'POST':
