@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clothing</title>
+  </head>
+  <body>
+    <h1>Donators</h1>
+
+    <ol>
+    {% for donator in all_donators %}
+        <li>{{ donator.first_name }} {{ donator.last_name }}</li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>

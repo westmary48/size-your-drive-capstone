@@ -14,4 +14,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', logout_user, name='logout'),
     url(r'^items$', item_list, name='items'),
+    url(r'^item/form$', item_form, name='item_form'),
+    # url(r'^donators$', list_donators, name='donators'),
+    # path('item/<int:item_id>/', item_details, name="item"),
+
 ]

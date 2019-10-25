@@ -1,0 +1,41 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+<h1>Clothing</h1>
+
+<form action="{% url 'capstoneapp:items' %}" method="post">
+  {% csrf_token %}
+  {% if item.id is not None %}
+  <input type="hidden" name="item_id" value="{{ item.id }}" />
+  {% endif %}
+  <fieldset>
+      <label for="name">Name: </label>
+      <input id="name" type="text" name="name" value="{{ item.name }}">
+  </fieldset>
+  <fieldset>
+      <label for="description">:Description </label>
+      <input id="description" type="text" name="description" value="{{ item.description }}">
+  </fieldset>
+  <fieldset>
+      <label for="size">Size </label>
+      <input id="size" type="number" name="size" value="{{ item.size }}">
+  </fieldset>
+  <fieldset>
+      <label for="quantity">Quantity: </label>
+      <input id="quantity" type="number" name="quantity" value="{{ item.quantity }}">
+  </fieldset>
+  <fieldset>
+      <label for="category_id">Category: </label>
+      <select id="category_id" type="text" name="category_id">
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == item.category_id %}selected{% endif %}>{{ category.name }}</option>
+            {% endfor %}
+      </select>
+  </fieldset>
+
+  {% if item.id is not None %}
+  <input type="submit" name="actual_method" value="Add It" />
+  {% else %}
+  <input type="submit" value="Add It" />
+  {% endif %}
+</form>
+{% endblock %}
