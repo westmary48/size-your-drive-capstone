@@ -6,11 +6,15 @@
     <title>Detail</title>
   </head>
   <body>
-    <h1>{{ item.title }}</h1>
-    <h2> {{ item.author }}</h2>
-
+    <h1>{{ item.name }}</h1>
+    <h2> {{ item.description }}</h2>
     <div>{{ item.category.name }}</div>
     <div>{{ item.size }}</div>
     <div>{{ item.quantity }}</div>
+    <form action="{% url 'capstoneapp:item' item.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="actual_method" value="DELETE">
+    <button>Delete</button>
+</form>
   </body>
 </html>
