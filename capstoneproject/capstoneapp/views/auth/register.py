@@ -32,10 +32,10 @@ def register_user(request):
         )
 
                 # also create a record in the donator table
-        # donator = Donator.objects.create(
-        #     address=form_data['address'],
-        #     phone_number=form_data['phone_number'],
-        #     user=new_user)
+        donator = Donator.objects.create(
+            address=form_data['address'],
+            phone_number=form_data['phone_number'],
+            user=new_user)
 
 
         authenticated_user = authenticate(username=form_data['username'], password=form_data['password'])
