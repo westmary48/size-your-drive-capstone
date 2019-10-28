@@ -1,23 +1,26 @@
 {% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/item.css' %}" />
+{% endblock %}
 
 {% block content %}
-    <h1>Items</h1>
-<a href="{% url 'capstoneapp:item_form' %}">Create New Clothing Item</a>
-    <div>
+    <h1>Donation Box</h1>
+
+    <a href="{% url 'capstoneapp:item_form' %}">Add Clothing to Inventory</a>
+
+    <ol class="items">
     {% for item in all_items %}
-    <div>
-    <a href="{% url 'capstoneapp:item' item.id %}">
-    {{ item.name }} </a>
-</div>
-<div>
-     {{item.description }}
-     </div>
-     <div>
-     {{item.size}}
-     </div>
-</div>
+        <div class="item">
+            <a class="item__name" href="{% url 'capstoneapp:item' item.id %}"> {{ item.name }}</a>
+            <div class="item__description">
+                {{item.description}}
+            </div>
+            <div> {{item.size}} </div>
+             <div>{{item.quantity}}</div>
+              <div>{{item.category.name}}</div>
+        </div>
     {% endfor %}
-    </div>
-
-
-{% endblock content %}
+    </ol>
+{% endblock %}

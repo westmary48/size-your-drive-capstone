@@ -1,44 +1,36 @@
-
-{% load static %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Size Your Drive</title>
-    <style>
-        .navList {
-            list-style-type: none;
-            display: flex;
-            border: 1px solid lightgray;
-            padding: 1em;
-        }
-         .navList__route {
-                margin: 0 0.5em;
-         }
-    </style>
+    <title>Library</title>
 
-    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
 
     {% block css %}
     {% endblock %}
 </head>
 
+<body>
+
     <nav id="site-nav">
         <ol class="navList">
             <li class="navList__route"><a href="{% url 'capstoneapp:home' %}">Home</a></li>
-            <li class="navList__route"><a href="{% url 'capstoneapp:items' %}">Clothing</a></li>
-            <li class="navList__route"><a href="{% url 'capstoneapp:login' %}">Login</a></li>
+            <li class="navList__route"><a href="{% url 'capstoneapp:items' %}">Donation Box</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:register' %}">Register</a></li>
+            <li class="navList__route"><a href="{% url 'capstoneapp:login' %}">Login</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:logout' %}">Logout</a></li>
         </ol>
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
 
+    {% block scripts %}
+    {% endblock scripts %}
 </body>
-
-</html>
 
 </html>
