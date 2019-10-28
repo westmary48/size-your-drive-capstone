@@ -6,21 +6,27 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Donation Box</h1>
 
-    <a href="{% url 'capstoneapp:item_form' %}">Add Clothing to Inventory</a>
+    <dialog class="infoDialog">
+        <div class="infoDialog__message"></div>
+        <button class="closeDialog">Close</button>
+    </dialog>
+
+    <a href="{% url 'capstoneapp:item_form' %}">Add item to Inventory</a>
 
     <ol class="items">
     {% for item in all_items %}
-        <div class="item">
+        <li class="item">
             <a class="item__name" href="{% url 'capstoneapp:item' item.id %}"> {{ item.name }}</a>
             <div class="item__description">
-                {{item.description}}
+                by {{item.size}} published in {{item.description}}
             </div>
-            <div> {{item.size}} </div>
-             <div>{{item.quantity}}</div>
-              <div>{{item.category.name}}</div>
-        </div>
+            <button id="detail--{{ item.id }}">Add To Donation Box</button>
+        </li>
     {% endfor %}
     </ol>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/items.js' %}"></script>
 {% endblock %}
