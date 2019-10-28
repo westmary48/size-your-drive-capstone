@@ -1,0 +1,16 @@
+[
+
+  {
+    "model": "capstoneapp.item",
+    "pk": 2,
+    "fields": {
+      "name": "Shoes",
+      "donator":2,
+      "description": "Barely used boys tennis shoes",
+      "quantity": "1",
+      "created_date":"2019-10-28",
+      "category":2,
+      "size":"Small"
+    }
+  }
+]

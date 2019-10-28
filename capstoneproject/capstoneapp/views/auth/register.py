@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from capstoneapp.models import Donator
-# from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -29,7 +28,7 @@ def register_user(request):
             email=form_data['email'],
             password=form_data['password'],
             first_name=form_data['first_name'],
-            last_name=form_data['last_name']
+            last_name=form_data['last_name'],
         )
 
                 # also create a record in the donator table
