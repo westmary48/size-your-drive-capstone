@@ -1,17 +1,23 @@
 import sqlite3
 from django.shortcuts import render
 from django.urls import reverse
+from rest_framework.viewsets import ViewSet
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from capstoneapp.models import Item
+from rest_framework.decorators import action
+from capstoneapp.models import Item, Donator
+from django.contrib.auth.models import User
 from capstoneapp.models import model_factory
 from ..connection import Connection
 
 
 @login_required
+
 def item_list(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
+
+            user = request.user
 
             conn.row_factory = model_factory(Item)
 
@@ -26,9 +32,10 @@ def item_list(request):
                 i.category_id,
                 i.donator_id
             from capstoneapp_item i
-            """)
+            where i.donator_id = ?
+            """,(user.id,))
 
-            all_items = db_cursor.fetchall()
+        all_items = db_cursor.fetchall()
 
         template = 'items/list.html'
         context = {
