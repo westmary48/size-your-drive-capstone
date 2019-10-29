@@ -2,7 +2,7 @@
 
   {
     "model": "capstoneapp.donationbox",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "donator": 2,
       "created_date": "2019-10-28"

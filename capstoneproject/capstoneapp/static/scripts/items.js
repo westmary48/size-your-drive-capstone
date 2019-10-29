@@ -5,7 +5,7 @@ const closeDialog = document.querySelector(".closeDialog")
 document.querySelector(".items").addEventListener("click", (evt) => {
     if (evt.target.id.startsWith("detail")) {
         const id = evt.target.id.split("--")[1]
-        message.innerText = `Added Item To Donation Box`
+        message.innerText = `You have added this item to your donation box ${id}`
         infoDialog.show()
     }
 })

@@ -19,8 +19,11 @@
         <li class="item">
             <a class="item__name" href="{% url 'capstoneapp:item' item.id %}"> {{ item.name }}</a>
             <div class="item__description">
-                by {{item.size}} published in {{item.description}}
+                 {{item.description}}
             </div>
+            <div>{{item.size}} </div>
+            <div>{{item.quantity}} </div>
+            <div>{{item.category.name}} </div>
             <button id="detail--{{ item.id }}">Add To Donation Box</button>
         </li>
     {% endfor %}

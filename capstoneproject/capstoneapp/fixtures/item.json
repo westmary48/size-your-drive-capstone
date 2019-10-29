@@ -2,7 +2,7 @@
 
   {
     "model": "capstoneapp.item",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "name": "Shoes",
       "donator":2,

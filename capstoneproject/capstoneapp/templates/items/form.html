@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Clothing Item</h1>
-
+{% if user.is_authenticated %}
     {% if item.id is not None %}
         <form action="{% url 'capstoneapp:item' item.id %}" method="post">
     {% else %}
@@ -41,6 +41,6 @@
         {% else %}
             <input type="submit" value="Add It" />
         {% endif %}
-
+    {% endif %}
     </form>
 {% endblock %}
