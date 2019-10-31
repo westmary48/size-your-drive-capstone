@@ -69,6 +69,9 @@ def donation_list(request):
             form_data = request.POST
 
             with sqlite3.connect(Connection.db_path) as conn:
+
+                user = request.user
+
                 db_cursor = conn.cursor()
 
                 db_cursor.execute("""
@@ -76,10 +79,10 @@ def donation_list(request):
                     (
                     created_date,complete,donator_id,item_id
                     )
-                    VALUES (date('now'),?,?,?)
-                    """),
+                    VALUES (date('now'),null, ?, ?)
+                    """,
 
-                (form_data['item_id'])
+                ( user.id,form_data['item_id']))
 
 
                 return redirect(reverse('capstoneapp:donations'))

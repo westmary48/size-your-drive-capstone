@@ -15,7 +15,7 @@
     <a href="{% url 'capstoneapp:item_form' %}">Add Clothing Item</a>
 
     <ol class="items">
-    {% csrf_token %}
+
     {% for item in all_items %}
         <li class="item">
             <a class="item__name" href="{% url 'capstoneapp:item' item.id %}"> {{ item.name }}</a>
@@ -25,7 +25,12 @@
             <div>{{item.size}} </div>
             <div>{{item.quantity}} </div>
             <div>{{item.category.name}} </div>
-            <button name="type" value="donation" type="button" id="detail--{{ item.id }}">Add To Donation Box</button>
+           <form action="{% url 'capstoneapp:donations' %}" method="post">
+            {% csrf_token %}
+            <input  type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
+
+            <button name="type" value={{item.id}} type="submit" id="detail--{{ item.id }}">Add To Donation Box</button>
+            </form>
 
 
         </li>
