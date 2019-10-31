@@ -15,6 +15,7 @@
     <a href="{% url 'capstoneapp:item_form' %}">Add Clothing Item</a>
 
     <ol class="items">
+    {% csrf_token %}
     {% for item in all_items %}
         <li class="item">
             <a class="item__name" href="{% url 'capstoneapp:item' item.id %}"> {{ item.name }}</a>
@@ -24,7 +25,8 @@
             <div>{{item.size}} </div>
             <div>{{item.quantity}} </div>
             <div>{{item.category.name}} </div>
-            <button name="type" value="donation" type="button">Add To Donation Box</button>
+            <button name="type" value="donation" type="button" id="detail--{{ item.id }}">Add To Donation Box</button>
+
 
         </li>
     {% endfor %}
@@ -37,5 +39,6 @@
 
 
 {% comment %} href= {% url 'capstoneapp:donations' %} {% endcomment %}
+{% comment %} <button  onSubmit name="type" value="donation" type="button">Add To Donation Box</button> {% endcomment %}
 
-{% comment %} <button name="type" value="donation" type="button" id="detail--{{ item.id }}">Add To Donation Box</button> {% endcomment %}
+

@@ -42,25 +42,47 @@ def donation_list(request):
         return render(request, template, context)
 
 
+    # elif request.method == 'POST':
 
-    elif request.POST.get('type') and request.POST.get('type') == "donation":
-        form_data = request.POST
+    #         form_data = request.POST
 
-        with sqlite3.connect(Connection.db_path) as conn:
-            db_cursor = conn.cursor()
+    #         newdonationbox = DonationBox()
+    #         newdonationbox.created_date = request.data["created_date"]
 
-            db_cursor.execute("""
-            INSERT INTO capstoneapp_donationbox
-                (
-                   donator_id
-                )
-                VALUES (?)
-                """),
+    #         donator = Donator.objects.get(id=request.data["donator_id"])
+    #         neworder.donator = donator
 
-            (form_data['donator_id'])
+    #         item = Item.objects.all()
+    #         item_name = item.get(pk=form_data["item_id"])
+
+    #         newdonationbox.save()
 
 
-            return redirect(reverse('capstoneapp:donations'))
+    #         return render(request, "donations/form.html",{"form": form_data, "all_donations": item})
+
+
+    # elif request.POST.get('type') and request.POST.get('type') == "donation":
+    #     form_data = request.POST
+
+
+    elif request.method == "POST":
+            form_data = request.POST
+
+            with sqlite3.connect(Connection.db_path) as conn:
+                db_cursor = conn.cursor()
+
+                db_cursor.execute("""
+                INSERT INTO capstoneapp_donationbox
+                    (
+                    created_date,complete,donator_id,item_id
+                    )
+                    VALUES (date('now'),?,?,?)
+                    """),
+
+                (form_data['item_id'])
+
+
+                return redirect(reverse('capstoneapp:donations'))
 
 
 
@@ -75,7 +97,7 @@ def donation_list(request):
         # def add_to_box(request, item_id):
         #     item = Item.objects.get(id=item_id)
         #     donationbox = DonationBox(request)
-        #     donationbox.add(item, item.name)
+        #     donationbox.add(item, item.name, item.quantity, item.size, item.description, item.category.name)
 
         # def remove_from_box(request, item_id):
         #     item = Item.objects.get(id=item_id)
@@ -87,15 +109,3 @@ def donation_list(request):
 
 
 
-    user = request.user
-    donator = Donator.objects.get(pk=user.id)
-
-    if request.method == 'GET':
-        try:
-            user_donations = donator.items.all()
-        except Donator.DoesNotExist:
-            user_donations = []
-
-
-        template_name = "donationbox/list.html"
-        return render(request, template_name, {'all_donations': user_donations})
