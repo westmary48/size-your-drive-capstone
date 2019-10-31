@@ -1,0 +1,30 @@
+[
+  {
+    "model": "capstoneapp.category",
+    "pk": 1,
+    "fields": {
+      "name": "Mens"
+    }
+  },
+  {
+    "model": "capstoneapp.category",
+    "pk": 2,
+    "fields": {
+      "name": "Boys"
+    }
+  },
+  {
+    "model": "capstoneapp.category",
+    "pk": 3,
+    "fields": {
+      "name": "Womens"
+    }
+  },
+  {
+    "model": "capstoneapp.category",
+    "pk": 4,
+    "fields": {
+      "name": "Girls"
+    }
+  }
+]

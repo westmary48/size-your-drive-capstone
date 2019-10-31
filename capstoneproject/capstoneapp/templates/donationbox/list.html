@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/item.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<ul>
+    <div class="items">
+    {% for donation in all_donations %}
+    <li>
+        <div>Item: {{ donation.item.name }} </div>
+         <div>Description: {{ donation.item.description }} </div>
+          <div>Quantity: {{ donation.item.quantity }} </div>
+          <div>Size: {{ donation.item.size }} </div>
+        <div>Category" {{ donation.item.category.name }} </div>
+    {% endfor %}
+
+    </div>
+    </ul>
+{% endblock %}
+

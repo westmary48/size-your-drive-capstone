@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Donator(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
 

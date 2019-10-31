@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
+from capstoneapp.models import Donator
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -28,15 +28,22 @@ def register_user(request):
             email=form_data['email'],
             password=form_data['password'],
             first_name=form_data['first_name'],
-            last_name=form_data['last_name']
+            last_name=form_data['last_name'],
         )
+
+                # also create a record in the donator table
+        donator = Donator.objects.create(
+            address=form_data['address'],
+            phone_number=form_data['phone_number'],
+            user=new_user)
+
 
         authenticated_user = authenticate(username=form_data['username'], password=form_data['password'])
 
         # If authentication was successful, log the user in
         if authenticated_user is not None:
             login(request=request, user=authenticated_user)
-            return redirect(reverse('capstoneapp:items'))
+            return redirect(reverse('capstoneapp:home'))
 
         else:
             # Bad login details were provided. So we can't log the user in.

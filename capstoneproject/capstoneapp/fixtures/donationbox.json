@@ -1,0 +1,13 @@
+[
+
+  {
+    "model": "capstoneapp.donationbox",
+    "pk": 1,
+    "fields": {
+      "donator": 3,
+      "created_date": "2019-10-28",
+      "item": 1,
+      "complete": "False"
+    }
+  }
+]

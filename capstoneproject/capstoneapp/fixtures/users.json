@@ -1,0 +1,13 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "newpassword",
+      "last_login": null, "is_superuser": false, "username": "mwest", "first_name": "Mary",
+      "last_name": "West",
+      "email": "mwest@gmail.com",
+      "is_active": true, "date_joined": "2019-10-28T14:06:30.047Z"
+    }
+  }
+]

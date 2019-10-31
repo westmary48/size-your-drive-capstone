@@ -20,4 +20,7 @@ urlpatterns = [
     path('items/<int:item_id>/', item_details, name='item'),
     url(r'^items/(?P<item_id>[0-9]+)/form$', item_edit_form, name='item_edit_form'),
 
+    # url(r'^donations$', donation_list, name='donations'),
+    url(r'^donations$', donation_list, name='donations'),
+
 ]

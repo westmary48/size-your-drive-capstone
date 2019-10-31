@@ -1,23 +1,49 @@
 {% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/item.css' %}" />
+{% endblock %}
 
 {% block content %}
-    <h1>Items</h1>
-<a href="{% url 'capstoneapp:item_form' %}">Create New Clothing Item</a>
-    <div>
+
+    <dialog class="infoDialog">
+        <div class="infoDialog__message"></div>
+        <button class="closeDialog">Close</button>
+    </dialog>
+
+    <a href="{% url 'capstoneapp:item_form' %}">Add Clothing Item</a>
+
+    <ol class="items">
+
     {% for item in all_items %}
-    <div>
-    <a href="{% url 'capstoneapp:item' item.id %}">
-    {{ item.name }} </a>
-</div>
-<div>
-     {{item.description }}
-     </div>
-     <div>
-     {{item.size}}
-     </div>
-</div>
+        <li class="item">
+            <a class="item__name" href="{% url 'capstoneapp:item' item.id %}"> {{ item.name }}</a>
+            <div class="item__description">
+                 {{item.description}}
+            </div>
+            <div>{{item.size}} </div>
+            <div>{{item.quantity}} </div>
+            <div>{{item.category.name}} </div>
+           <form action="{% url 'capstoneapp:donations' %}" method="post">
+            {% csrf_token %}
+            <input  type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
+
+            <button name="type" value={{item.id}} type="submit" id="detail--{{ item.id }}">Add To Donation Box</button>
+            </form>
+
+
+        </li>
     {% endfor %}
-    </div>
+    </ol>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/items.js' %}"></script>
+{% endblock %}
 
 
-{% endblock content %}
+{% comment %} href= {% url 'capstoneapp:donations' %} {% endcomment %}
+{% comment %} <button  onSubmit name="type" value="donation" type="button">Add To Donation Box</button> {% endcomment %}
+
+
