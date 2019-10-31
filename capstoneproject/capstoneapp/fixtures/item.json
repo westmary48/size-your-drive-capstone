@@ -5,7 +5,7 @@
     "pk": 1,
     "fields": {
       "name": "Shoes",
-      "donator":2,
+      "donator":3,
       "description": "Barely used boys tennis shoes",
       "quantity": "1",
       "created_date":"2019-10-28",

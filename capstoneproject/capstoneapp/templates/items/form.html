@@ -9,6 +9,7 @@
         <form action="{% url 'capstoneapp:items' %}" method="post">
     {% endif %}
         {% csrf_token %}
+          <input  type="hidden" id="item_id" name="item_id" value="{{ item.id }}">
       <fieldset>
           <label for="name">Item: </label>
           <input id="name" type="text" name="name" value="{{ item.name }}">

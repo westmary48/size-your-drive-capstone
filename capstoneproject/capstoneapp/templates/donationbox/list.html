@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Donation Box</title>
+  </head>
+  <body>
+    <h1>Donation</h1>
+
+    <ol>
+    {% for donation in all_donations %}
+        <div>{{ donation.donator.user.first_name }} </div>
+         <div>{{ donation.donator.user.last_name }} </div>
+        <div>{{ donation.item.name }} </div>
+         <div>{{ donation.item.description }} </div>
+          <div>{{ donation.item.quantity }} </div>
+          <div>{{ donation.item.size }} </div>
+        <div>{{ donation.item.category.name }} </div>
+    {% endfor %}
+    </ol>
+  </body>
+</html>

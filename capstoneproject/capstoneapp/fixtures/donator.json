@@ -1,18 +1,18 @@
 [
   {
     "model": "capstoneapp.donator",
-    "pk": 1,
+    "pk": 2,
     "fields": {
-      "user": 1,
+      "user": 2,
       "address": "5555 Peyton Manning Way",
       "phone_number": "444-555-6666"
     }
   },
   {
     "model": "capstoneapp.donator",
-    "pk": 2,
+    "pk": 3,
     "fields": {
-      "user": 2,
+      "user": 3,
       "address": "777 Peyton Manning Way",
       "phone_number": "444-555-6666"
     }

@@ -63,6 +63,4 @@ def item_list(request):
                 request.user.donator.id,
                  form_data["category_id"]))
 
-
     return redirect(reverse('capstoneapp:items'))
-
